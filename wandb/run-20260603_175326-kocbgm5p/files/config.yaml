@@ -1,0 +1,53 @@
+_wandb:
+    value:
+        cli_version: 0.27.0
+        e:
+            4r6dv67buxaj9f0nb4mw1y5bsbd235qj:
+                codePath: src\train.py
+                codePathLocal: src\train.py
+                cpu_count: 8
+                cpu_count_logical: 16
+                cudaVersion: "13.1"
+                disk:
+                    /:
+                        total: "838859747328"
+                        used: "72871383040"
+                email: 124111030@nitkkr.ac.in
+                executable: D:\Desktop\Programming\ML\dl_env\Scripts\python.exe
+                git:
+                    commit: 6f67f07cb76facec5ea3c9202d5198151b3e8452
+                    remote: https://github.com/BVedhashreyan/inaturalist-cnn-classifier.git
+                gpu: NVIDIA GeForce RTX 4060 Laptop GPU
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ada
+                      cudaCores: 3072
+                      memoryTotal: "8585740288"
+                      name: NVIDIA GeForce RTX 4060 Laptop GPU
+                      uuid: GPU-27bafa62-4995-ee2f-a77c-e59e31ac4576
+                host: Vedh-Laptop
+                memory:
+                    total: "16356962304"
+                os: Windows-11-10.0.26200-SP0
+                program: D:\Desktop\Programming\ML\inaturalist_CNN_classifier\src\train.py
+                python: CPython 3.14.5
+                root: D:\Desktop\Programming\ML\inaturalist_CNN_classifier
+                startedAt: "2026-06-03T12:23:26.931988Z"
+                writerId: 4r6dv67buxaj9f0nb4mw1y5bsbd235qj
+        m: []
+        python_version: 3.14.5
+        t:
+            "1":
+                - 1
+                - 41
+            "2":
+                - 1
+                - 41
+            "3":
+                - 2
+            "4": 3.14.5
+            "5": 0.27.0
+            "8":
+                - 3
+            "12": 0.27.0
+            "13": windows-amd64

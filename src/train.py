@@ -4,6 +4,7 @@ import torch.optim as optim
 from dataset import get_loaders
 from model import CNN
 import os
+import wandb
 
 def train_one_epoch(model, train_loader, criterion, optimizer, device):
     model.train()
@@ -63,6 +64,9 @@ def validate(model, val_loader, criterion, device):
     return val_loss, val_acc
 
 def main():
+    wandb.init(
+        project="inaturalist-cnn-classifier"
+    )
     model = CNN(filters=[32,64,128,64,32])
 
     total_params = sum(p.numel() for p in model.parameters())
@@ -96,7 +100,12 @@ def main():
     for epoch in range(num_epochs):
         train_loss, train_acc = train_one_epoch(model, train_loader, criterion, optimizer, device)
         val_loss, val_acc = validate(model, val_loader, criterion, device)
-
+        wandb.log({
+            "train_loss": train_loss,
+            "train_acc": train_acc,
+            "val_loss": val_loss,
+            "val_acc": val_acc
+        })
         if val_acc > best_val_acc:
             best_val_acc = val_acc
 
@@ -109,7 +118,8 @@ def main():
 
         print(f"Epoch {epoch+1}/{num_epochs}")
         print(f"Train Loss : {train_loss} , Train acc : {train_acc} , Val loss : {val_loss} , Val Acc : {val_acc}")
-    
+        
+    wandb.finish()
 
 if __name__ == "__main__":
     main()

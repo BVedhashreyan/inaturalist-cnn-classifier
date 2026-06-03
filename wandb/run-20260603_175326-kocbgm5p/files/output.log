@@ -1,0 +1,11 @@
+387626
+device: cuda
+Best model saved
+Epoch 1/3
+Train Loss : 2.301497099876404 , Train acc : 0.09926240780097512 , Val loss : 2.2917763013688344 , Val Acc : 0.1145
+Best model saved
+Epoch 2/3
+Train Loss : 2.2483064584732055 , Train acc : 0.15301912739092385 , Val loss : 2.209999542387705 , Val Acc : 0.172
+Best model saved
+Epoch 3/3
+Train Loss : 2.16504132270813 , Train acc : 0.1978997374671834 , Val loss : 2.117191889929393 , Val Acc : 0.22
