@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 from dataset import get_loaders
 from model import CNN
+import os
 
 def train_one_epoch(model, train_loader, criterion, optimizer, device):
     model.train()
@@ -79,8 +80,12 @@ def main():
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr = learning_rate, weight_decay=1e-4)
     
-    train_path = r"data/inaturalist_12K/train"
-    val_path = r"data/inaturalist_12K/val"
+    if os.path.exists("/content"):
+        train_path = "/content/data/inaturalist_12K/train"
+        val_path = "/content/data/inaturalist_12K/val"
+    else:
+        train_path = "data/inaturalist_12K/train"
+        val_path = "data/inaturalist_12K/val"
 
     train_loader, val_loader, test_loader = get_loaders(train_path, val_path, batch_size=32)
 
