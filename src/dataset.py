@@ -77,19 +77,25 @@ def get_loaders(train_path, test_path, batch_size = default_batch_size, transfor
     train_loader = DataLoader(
         train_dataset,
         batch_size=batch_size,
-        shuffle=True
+        shuffle=True,
+        num_workers=2,
+        pin_memory=True
     )
 
     val_loader = DataLoader(
         val_dataset,
         batch_size=batch_size,
-        shuffle=False
+        shuffle=False,
+        num_workers=2,
+        pin_memory=True
     )
 
     test_loader = DataLoader(
         test_dataset,
         batch_size=batch_size,
-        shuffle=False
+        shuffle=False,
+        num_workers=2,
+        pin_memory=True
     )
 
     return train_loader, val_loader, test_loader
