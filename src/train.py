@@ -91,6 +91,7 @@ def main():
 
     num_epochs = 3
     best_val_acc = 0
+    os.makedirs("outputs", exist_ok=True)
 
     for epoch in range(num_epochs):
         train_loss, train_acc = train_one_epoch(model, train_loader, criterion, optimizer, device)
