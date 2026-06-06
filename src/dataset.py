@@ -68,7 +68,7 @@ def get_loaders(train_path, test_path, batch_size = default_batch_size, transfor
         full_dataset,
         train_ind
     )
-    
+
     val_dataset = Subset(
         full_dataset,
         val_ind
@@ -84,7 +84,7 @@ def get_loaders(train_path, test_path, batch_size = default_batch_size, transfor
         train_dataset,
         batch_size=batch_size,
         shuffle=True,
-        num_workers=2,
+        num_workers=4,
         pin_memory=True
     )
 
@@ -92,7 +92,7 @@ def get_loaders(train_path, test_path, batch_size = default_batch_size, transfor
         val_dataset,
         batch_size=batch_size,
         shuffle=False,
-        num_workers=2,
+        num_workers=4,
         pin_memory=True
     )
 
@@ -100,7 +100,7 @@ def get_loaders(train_path, test_path, batch_size = default_batch_size, transfor
         test_dataset,
         batch_size=batch_size,
         shuffle=False,
-        num_workers=2,
+        num_workers=4,
         pin_memory=True
     )
 

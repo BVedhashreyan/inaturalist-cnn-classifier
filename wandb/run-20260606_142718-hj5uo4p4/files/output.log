@@ -1,0 +1,17 @@
+4783242
+device: cuda
+Traceback (most recent call last):
+  File "D:\Desktop\Programming\ML\inaturalist_CNN_classifier\src\train.py", line 167, in <module>
+    main()
+    ~~~~^^
+  File "D:\Desktop\Programming\ML\inaturalist_CNN_classifier\src\train.py", line 141, in main
+    train_loss, train_acc = train_one_epoch(model, train_loader, criterion, optimizer, device)
+                            ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Desktop\Programming\ML\inaturalist_CNN_classifier\src\train.py", line 32, in train_one_epoch
+    correct += (predictions == labels).sum().item()
+                ^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: unknown error
+Search for `cudaErrorUnknown' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.

@@ -1,0 +1,80 @@
+_wandb:
+    value:
+        cli_version: 0.27.0
+        e:
+            u4fw3ucs54rmzj1kr4xq7idf15y1r2x3:
+                codePath: src\train.py
+                codePathLocal: src\train.py
+                cpu_count: 8
+                cpu_count_logical: 16
+                cudaVersion: "13.1"
+                disk:
+                    /:
+                        total: "838859747328"
+                        used: "73412984832"
+                email: 124111030@nitkkr.ac.in
+                executable: D:\Desktop\Programming\ML\dl_env\Scripts\python.exe
+                git:
+                    commit: 7a4f22487274c6ef85e6a9e1d160e24366ed0831
+                    remote: https://github.com/BVedhashreyan/inaturalist-cnn-classifier.git
+                gpu: NVIDIA GeForce RTX 4060 Laptop GPU
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ada
+                      cudaCores: 3072
+                      memoryTotal: "8585740288"
+                      name: NVIDIA GeForce RTX 4060 Laptop GPU
+                      uuid: GPU-27bafa62-4995-ee2f-a77c-e59e31ac4576
+                host: Vedh-Laptop
+                memory:
+                    total: "16356962304"
+                os: Windows-11-10.0.26200-SP0
+                program: D:\Desktop\Programming\ML\inaturalist_CNN_classifier\src\train.py
+                python: CPython 3.14.5
+                root: D:\Desktop\Programming\ML\inaturalist_CNN_classifier
+                startedAt: "2026-06-06T08:57:18.388257Z"
+                writerId: u4fw3ucs54rmzj1kr4xq7idf15y1r2x3
+        m: []
+        python_version: 3.14.5
+        t:
+            "1":
+                - 1
+                - 5
+                - 41
+                - 53
+            "2":
+                - 1
+                - 5
+                - 41
+                - 53
+            "3":
+                - 16
+            "4": 3.14.5
+            "5": 0.27.0
+            "8":
+                - 3
+            "12": 0.27.0
+            "13": windows-amd64
+activation:
+    value: gelu
+batch_norm:
+    value: true
+batch_size:
+    value: 64
+dropout:
+    value: 0.2
+epochs:
+    value: 2
+filters:
+    value:
+        - 32
+        - 64
+        - 128
+        - 256
+        - 512
+kernel_size:
+    value: 3
+learning_rate:
+    value: 0.001
+total_parameters:
+    value: 4783242
