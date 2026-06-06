@@ -4,10 +4,9 @@ import torch
 from PIL import Image
 
 from torchvision import transforms
-from torch.utils.data import DataLoader, random_split, Dataset
+from torch.utils.data import DataLoader, Subset, Dataset
+from sklearn.model_selection import train_test_split
 
-
-generator = torch.Generator().manual_seed(42)
 image_extensions = (".jpg", ".jpeg", ".png", ".bmp", ".gif", ".webp")
 
 default_transform = transforms.Compose([
@@ -58,14 +57,21 @@ def get_loaders(train_path, test_path, batch_size = default_batch_size, transfor
         train_path,
         transform=transform
     )
+    
+    indices = list(range(len(full_dataset)))
 
-    train_size = int(0.8 * len(full_dataset))
-    val_size = len(full_dataset) - train_size
+    labels = [label for _,label in full_dataset.samples]
 
-    train_dataset, val_dataset = random_split(
+    train_ind, val_ind = train_test_split(indices, test_size=0.2, random_state=42, stratify=labels)
+
+    train_dataset = Subset(
         full_dataset,
-        [train_size, val_size],
-        generator= generator
+        train_ind
+    )
+    
+    val_dataset = Subset(
+        full_dataset,
+        val_ind
     )
 
     test_dataset = INaturalistDataset(
