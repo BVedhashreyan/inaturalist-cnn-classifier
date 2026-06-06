@@ -66,24 +66,22 @@ def validate(model, val_loader, criterion, device):
 def main():
     wandb.init(
         project="inaturalist-cnn-classifier",
-        config={
-            "filters": [32,64,128,64,32],
-            "batch_size": 32,
-            "learning_rate": 0.001,
-            "epochs": 3,
-            "dropout": 0.0,
-            "batch_norm": False,
-            "activation": "relu"
-        }
     )
 
     config = wandb.config
+    filters = config.get("filters", [64,64,64,64,64])
+    batch_size = config.get("batch_size", 32)
+    learning_rate = config.get("learning_rate", 0.001)
+    epochs = config.get("epochs", 3)
+    dropout = config.get("dropout", 0.0)
+    batch_norm = config.get("batch_norm", False)
+    activation = config.get("activation", "relu")
 
     model = CNN(
-        filters=config.filters,
-        dropout=config.dropout,
-        batch_norm=config.batch_norm,
-        activation=config.activation
+        filters=filters,
+        dropout=dropout,
+        batch_norm=batch_norm,
+        activation=activation
     )
 
     total_params = sum(p.numel() for p in model.parameters())
@@ -99,7 +97,6 @@ def main():
 
     model = model.to(device)
 
-    learning_rate = config.learning_rate
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr = learning_rate, weight_decay=1e-4)
     
@@ -110,9 +107,9 @@ def main():
         train_path = "data/inaturalist_12K/train"
         val_path = "data/inaturalist_12K/val"
 
-    train_loader, val_loader, test_loader = get_loaders(train_path, val_path, batch_size=config.batch_size)
+    train_loader, val_loader, test_loader = get_loaders(train_path, val_path, batch_size=batch_size)
 
-    num_epochs = config.epochs
+    num_epochs = epochs
     best_val_acc = 0
     os.makedirs("outputs", exist_ok=True)
 
