@@ -66,6 +66,12 @@ def validate(model, val_loader, criterion, device):
 def main():
     wandb.init(
         project="inaturalist-cnn-classifier",
+        config={
+            "activation": "gelu",
+            "dropout": 0.2,
+            "batch_norm": True,
+            "epochs":1
+        }
     )
 
     config = wandb.config
