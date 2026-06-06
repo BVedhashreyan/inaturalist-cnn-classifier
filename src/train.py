@@ -72,6 +72,7 @@ def main():
     filters = config.get("filters", [64,64,64,64,64])
     batch_size = config.get("batch_size", 32)
     learning_rate = config.get("learning_rate", 0.001)
+    kernel_size = config.get("kernel_size", 3)
     epochs = config.get("epochs", 3)
     dropout = config.get("dropout", 0.0)
     batch_norm = config.get("batch_norm", False)
@@ -81,12 +82,13 @@ def main():
         filters=filters,
         dropout=dropout,
         batch_norm=batch_norm,
-        activation=activation
+        activation=activation,
+        kernel_size=kernel_size
     )
 
     total_params = sum(p.numel() for p in model.parameters())
     print(total_params)
-    wandb.log({
+    wandb.config.update({
         "total_parameters": total_params
     })
     
@@ -112,6 +114,7 @@ def main():
     num_epochs = epochs
     best_val_acc = 0
     os.makedirs("outputs", exist_ok=True)
+    run_name = wandb.run.name
 
     if os.path.exists("/content"):
         os.makedirs(
@@ -119,9 +122,9 @@ def main():
             exist_ok=True
         )
     
-    save_path = "outputs/best_model.pth"
+    save_path = f"outputs/{run_name}.pth"
     if os.path.exists("/content"):
-        save_path = "/content/drive/MyDrive/inaturalist-cnn-classifier/best_model.pth"
+        save_path = f"/content/drive/MyDrive/inaturalist-cnn-classifier/{run_name}.pth"
 
 
     for epoch in range(num_epochs):

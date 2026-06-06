@@ -31,6 +31,10 @@ sweep_config = {
             ]
         },
 
+        "kernel_size": {
+            "values": [3, 5]
+        },  
+
         "learning_rate": {
             "values": [1e-3, 5e-4]
         },
@@ -53,5 +57,5 @@ sweep_id = wandb.sweep(
 wandb.agent(
     sweep_id,
     function=main,
-    count=20
+    count=3
 )
